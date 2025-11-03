@@ -15,19 +15,22 @@ const NowTime: React.FC = () => {
 	const [timeOfDay, setTimeOfDay] = useState<string>("");
 
 	useEffect(() => {
-		const fetchLocationAndTime = async () => {
-			try {
-				const locationData = { city: "Berlin", timeZone: "Europe/Berlin" };
-				const currentTime = moment().tz(locationData.timeZone);
-				setLocation(locationData.city);
-				setTime(currentTime);
-				setTimeOfDay(getTimeOfDay(currentTime));
-			} catch (error) {
-				console.error("Error fetching location or time:", error);
-			}
+		const locationData = { city: "Accra", timeZone: "Africa/Accra" };
+
+		const updateTime = () => {
+			const currentTime = moment().tz(locationData.timeZone);
+			setLocation(locationData.city);
+			setTime(currentTime);
+			setTimeOfDay(getTimeOfDay(currentTime));
 		};
 
-		fetchLocationAndTime();
+		updateTime(); // Initial call to set time immediately
+
+		const intervalId = setInterval(updateTime, 60000); // Update every minute
+
+		return () => {
+			clearInterval(intervalId); // Cleanup on unmount
+		};
 	}, []);
 
 	const renderSvg = () => {
@@ -93,7 +96,8 @@ const NowTime: React.FC = () => {
 						className="text-xs text-body transition duration-150"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
-						transition={{ duration: 0.3, delay: 0.25 }}>
+						transition={{ duration: 0.3, delay: 0.25 }}
+						data-testid="time-display">
 						{location}, {time.format("h")}
 						<motion.span
 							className="animate-pulse"
