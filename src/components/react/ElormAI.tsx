@@ -87,7 +87,7 @@ export default function LakshAI() {
 							exit="exit"
 							className="mb-4 flex justify-start">
 							<div className="max-w-xs rounded-lg bg-green-100 px-2.5 py-1.5 text-emerald-700">
-								Hi! I'm <span className="font-semibold">Lakshay's AI persona</span>. Ask me anything about him or his
+								Hi! I'm <span className="font-semibold">Elorm's AI assistant</span>. Ask me anything about him or his
 								work. I'll be happy to assist you.
 							</div>
 						</motion.div>
