@@ -3,6 +3,9 @@ import moment from "moment-timezone";
 import { getTimeOfDay } from "../../utils/getTime";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Initialize moment timezone
+moment.tz.setDefault("Africa/Accra");
+
 const NowTime: React.FC = () => {
 	const variants = {
 		initial: { opacity: 0 },
@@ -30,10 +33,20 @@ const NowTime: React.FC = () => {
 		// Initial fetch
 		fetchLocationAndTime();
 
-		// Update every minute
-		const intervalId = setInterval(() => {
-			fetchLocationAndTime();
-		}, 60000); // 60000ms = 1 minute
+		// Update every second at first
+		let currentInterval = setInterval(fetchLocationAndTime, 1000);
+		
+		// Switch to minute updates after 10 seconds
+		const switchTimer = setTimeout(() => {
+			clearInterval(currentInterval);
+			currentInterval = setInterval(fetchLocationAndTime, 60000);
+		}, 10000);
+
+		// Cleanup function
+		return () => {
+			clearInterval(currentInterval);
+			clearTimeout(switchTimer);
+		};
 
 		// Cleanup interval on component unmount
 		return () => clearInterval(intervalId);
