@@ -17,7 +17,7 @@ const NowTime: React.FC = () => {
 	useEffect(() => {
 		const fetchLocationAndTime = async () => {
 			try {
-				const locationData = { city: "Berlin", timeZone: "Europe/Berlin" };
+				const locationData = { city: "Accra", timeZone: "Africa/Accra" };
 				const currentTime = moment().tz(locationData.timeZone);
 				setLocation(locationData.city);
 				setTime(currentTime);
@@ -27,7 +27,16 @@ const NowTime: React.FC = () => {
 			}
 		};
 
+		// Initial fetch
 		fetchLocationAndTime();
+
+		// Update every minute
+		const intervalId = setInterval(() => {
+			fetchLocationAndTime();
+		}, 60000); // 60000ms = 1 minute
+
+		// Cleanup interval on component unmount
+		return () => clearInterval(intervalId);
 	}, []);
 
 	const renderSvg = () => {
