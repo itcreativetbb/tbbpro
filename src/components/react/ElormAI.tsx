@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { messageVariants, greetingVariants } from "../../utils/animationVariants";
 import { sanitizeHTML } from "../../utils/sanitize";
 
-export default function LakshAI() {
+export default function ElormAI() {
 	const renderer = new marked.Renderer();
 
 	renderer.code = ({ text, lang }) => {

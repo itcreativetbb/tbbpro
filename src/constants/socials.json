@@ -9,35 +9,35 @@
 	{
 		"id": 2,
 		"name": "twitter",
-		"url": "https://x.com/blakssh",
+		"url": "https://x.com/itniggatbb",
 		"target": "_blank",
 		"icon": "twitter"
 	},
 	{
 		"id": 3,
 		"name": "github",
-		"url": "https://github.com/lakshaybhushan",
+		"url": "https://github.com/itcreativetbb",
 		"target": "_blank",
 		"icon": "github"
 	},
 	{
 		"id": 4,
 		"name": "Behance",
-		"url": "https://www.behance.net/lakshaybhushan",
+		"url": "https://www.behance.net/itcreativetbb",
 		"target": "_blank",
 		"icon": "behance"
 	},
 	{
 		"id": 5,
 		"name": "linkedin",
-		"url": "https://www.linkedin.com/in/lakshaybhushan/",
+		"url": "https://www.linkedin.com/in/itcreativetbb/",
 		"target": "_blank",
 		"icon": "linkedin"
 	},
 	{
 		"id": 6,
 		"name": "email",
-		"url": "mailto:lakshaybhushan2403@gmail.com",
+		"url": "mailto:it.creative0@gmail.com",
 		"target": "_blank",
 		"icon": "email"
 	}

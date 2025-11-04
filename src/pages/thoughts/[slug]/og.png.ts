@@ -61,7 +61,7 @@ export async function GET({ props }: Props) {
 				React.createElement("img", {
 					tw: "w-6 h-6 rounded-full mr-4",
 					src: "https://www.lakshb.dev/favicon.svg",
-					alt: "Lakshay Bhushan",
+					alt: "Elorm Oscar",
 				}),
 				React.createElement(
 					"div",
@@ -72,7 +72,7 @@ export async function GET({ props }: Props) {
 							letterSpacing: "-0.05em",
 						},
 					},
-					"Lakshay Bhushan",
+					"Elorm Oscar",
 				),
 			),
 			React.createElement(
