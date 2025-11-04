@@ -1,11 +1,18 @@
 ---
+// Layouts
 import Layout from "../layouts/Layout.astro";
+
+// Components
+import ProjectCard from "../components/ProjectCard.astro";
 import { Icon } from "astro-icon/components";
+
+// Icons
 import { RiArrowRightUpLine } from "react-icons/ri";
+import { PiLightbulbFill } from "react-icons/pi";
+
+// Data
 import projectsData from "../constants/projects.json";
 import socialsData from "../constants/socials.json";
-import ProjectCard from "../components/ProjectCard.astro";
-import { PiLightbulbFill } from "react-icons/pi";
 
 const projects = projectsData;
 const socials = socialsData;
@@ -22,12 +29,14 @@ const socials = socialsData;
 	</div>
 
 	<p class="bio pt-4 text-sm">
-		Hi there, I'm Lakshay, a 21 y/o CS student at IIIT Delhi who loves to <span class="text-black">design</span> and <span
-			class="text-black">build</span
-		> stuff. I'm currently exploring <span class="text-black">user-centered design</span> for creating more intuitive and
-		seamless interfaces. In my spare time, I enjoy making <span class="text-black">UI concepts</span> or working on <span
-			class="text-black">personal projects</span
-		>.
+		Hi there, I'm Elorm Oscar, a 19 y/o Tech enthusiast with a strong background in software engineering and cybersecurity, 
+		<span class="text-black">trained at IPMC Ghana</span>. I've 
+		<span class="text-black">built secure</span> and 
+		scalable applications, led cross-functional teams, and 
+		<span class="text-black">designed engaging digital experiences</span>. 
+		My achievements span cloud, AI, and open source, always blending technical excellence 
+		<span class="text-black">with creative</span> problem-solving. 
+		<span class="text-black">@itcreativetbb</span>
 	</p>
 
 	<div class="socials grid w-fit grid-cols-3 gap-2 pt-4 tracking-tight md:flex md:flex-row md:items-start">
@@ -37,7 +46,7 @@ const socials = socialsData;
 					href={social.url}
 					target={social.target}
 					rel={social.target === "_blank" ? "noopener noreferrer" : undefined}
-					class="group md:hover:text-primary flex items-center underline-offset-4 transition duration-150 ease-in-out md:hover:underline">
+					class="group flex items-center transition duration-150 ease-in-out underline-offset-4 md:hover:text-primary md:hover:underline">
 					<Icon name={social.icon} size={14} class="mr-1.5" />
 					<span class="text-sm">{social.name}</span>
 					<RiArrowRightUpLine className="opacity-0 transition-opacity duration-150 md:group-hover:opacity-100" />
@@ -53,16 +62,16 @@ const socials = socialsData;
 		</div>
 		<div class="group">
 			<p
-				class="border-body/20 bg-hoverColor/60 text-body mt-4 w-fit rounded-md border px-2 py-1 text-xs transition-all duration-300 ease-in-out">
+				class="mt-4 w-fit rounded-md border border-body/20 bg-hoverColor/60 px-2 py-1 text-xs text-body transition-all duration-300 ease-in-out">
 				<PiLightbulbFill
 					className="md:group-hover:text-primary -mt-0.5 inline-block transition-all duration-300 ease-in-out"
 				/>
 				Feel free to explore my
 				<a
-					href="https://github.com/lakshaybhushan?tab=repositories"
+					href="https://github.com/itcreativetbb?tab=repositories"
 					rel="noopenner noreferrer"
 					target="_blank"
-					class="text-body md:hover:text-primary md:group-hover:text-primary font-medium underline underline-offset-2 transition-all duration-150 ease-in-out"
+					class="font-medium text-body underline underline-offset-2 transition-all duration-150 ease-in-out md:hover:text-primary md:group-hover:text-primary"
 					>GitHub</a
 				> for more projects. Most of them are open-source.
 			</p>
