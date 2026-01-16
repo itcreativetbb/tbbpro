@@ -42,6 +42,17 @@ export default defineConfig({
 
 	vite: {
 		plugins: [tailwindcss()],
+		build: {
+			chunkSizeWarningLimit: 1000,
+			rollupOptions: {
+				output: {
+					manualChunks: {
+						vendor: ["react", "react-dom"],
+						ui: ["framer-motion"],
+					},
+				},
+			},
+		},
 	},
 
 	server: {

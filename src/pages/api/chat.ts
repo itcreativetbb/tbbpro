@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
 		}
 
 		const result = streamText({
-			model: google("gemini-2.0-flash-001"),
+			model: google("gemini-1.5-flash"),
 			system: aboutMe(),
 			temperature: 0.5,
 			messages: convertToCoreMessages(messages),
@@ -39,6 +39,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 		return result.toDataStreamResponse();
 	} catch (error) {
+		console.error("Chat API Error:", error);
 		return new Response(JSON.stringify({ error: "Internal server error" }), {
 			status: 500,
 			headers: { "Content-Type": "application/json" },
