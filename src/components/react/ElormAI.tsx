@@ -20,6 +20,7 @@ export default function ElormAI() {
 	marked.setOptions({ renderer });
 
 	const { messages, input, handleInputChange, handleSubmit, setInput, status, error } = useChat({
+		api: "/api/chat",
 		onError: (error) => {
 			console.error("Chat error:", error);
 		},
@@ -67,11 +68,10 @@ export default function ElormAI() {
 							exit="exit"
 							className={`flex ${m.role === "user" ? "justify-end" : "justify-start"} mb-4`}>
 							<div
-								className={`${
-									m.role === "user"
+								className={`${m.role === "user"
 										? "rounded-full bg-blue-100 text-blue-700"
 										: "rounded-full bg-green-100 text-emerald-700"
-								} max-w-xs rounded-lg px-2.5 py-1.5`}>
+									} max-w-xs rounded-lg px-2.5 py-1.5`}>
 								<div dangerouslySetInnerHTML={{ __html: sanitizeMarkdown(m.content) }} />
 							</div>
 						</motion.div>
@@ -133,9 +133,8 @@ export default function ElormAI() {
 						value={input}
 						onChange={handleInputChange}
 						disabled={isProcessing}
-						className={`border-body/20 placeholder:text-body/50 flex-1 rounded-l-full border border-r-0 bg-amber-50/50 px-4 py-2.5 focus:ring-0 focus:outline-none active:focus:outline-none ${
-							isProcessing ? "cursor-not-allowed" : "cursor-auto"
-						}`}
+						className={`border-body/20 placeholder:text-body/50 flex-1 rounded-l-full border border-r-0 bg-amber-50/50 px-4 py-2.5 focus:ring-0 focus:outline-none active:focus:outline-none ${isProcessing ? "cursor-not-allowed" : "cursor-auto"
+							}`}
 						placeholder="Ask about me or my work!"
 					/>
 					<button

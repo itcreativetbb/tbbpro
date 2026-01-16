@@ -6,12 +6,21 @@ import { validateMessageContent } from "../../utils/sanitize";
 
 export const prerender = false;
 
-const google = createGoogleGenerativeAI({
-	apiKey: import.meta.env.GOOGLE_API_KEY,
-});
-
 export const POST: APIRoute = async ({ request }) => {
 	try {
+		const apiKey = import.meta.env.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY;
+		if (!apiKey) {
+			console.error("Missing GOOGLE_API_KEY");
+			return new Response(JSON.stringify({ error: "Server configuration error" }), {
+				status: 500,
+				headers: { "Content-Type": "application/json" },
+			});
+		}
+
+		const google = createGoogleGenerativeAI({
+			apiKey: apiKey,
+		});
+
 		const { messages } = await request.json();
 
 		if (!Array.isArray(messages)) {
