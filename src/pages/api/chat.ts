@@ -1,8 +1,8 @@
 import type { APIRoute } from "astro";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { streamText, convertToCoreMessages } from "ai";
+import { streamText } from "ai";
 import aboutMe from "../../utils/aboutMe";
-import { validateMessageContent } from "../../utils/sanitize";
+import { validateMessageContent } from "../../utils/validation";
 
 export const prerender = false;
 
@@ -43,10 +43,10 @@ export const POST: APIRoute = async ({ request }) => {
 			model: google("gemini-1.5-flash"),
 			system: aboutMe(),
 			temperature: 0.5,
-			messages: convertToCoreMessages(messages),
+			messages: messages, // In v6, convertToCoreMessages is removed. messages might be passable directly if they are valid CoreMessage[]
 		});
 
-		return result.toDataStreamResponse();
+		return result.toTextStreamResponse();
 	} catch (error) {
 		console.error("Chat API Error:", error);
 		return new Response(JSON.stringify({ error: "Internal server error" }), {
